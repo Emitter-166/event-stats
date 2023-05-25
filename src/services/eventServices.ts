@@ -106,7 +106,7 @@ export const create_stats_embed = async (channel: Channel) => {
                     .replace('1.', "🥇")
                     .replace('2.', "🥈")
                     .replace('3.', '🥉');
-            }).join('\n')
+            }).slice(0, 20).join('\n')
 
         let stats = '```css\n' + 
         `- message count:  ${message_count} \n` +
