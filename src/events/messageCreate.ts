@@ -1,6 +1,6 @@
 import { Client, PermissionFlagsBits } from "discord.js";
 import { errHandler, sequelize } from "..";
-import { createEvent, deleteEvent } from "../services/eventServices";
+import { createEvent, deleteEvent, send_stats } from "../services/eventServices";
 
 export const message_create_listener = (client: Client) => {
     client.on('messageCreate', async msg => {
@@ -17,6 +17,8 @@ export const message_create_listener = (client: Client) => {
                     return await createEvent(msg)
                 case "stop":
                     return await deleteEvent(msg)
+                case "stats":
+                    return await send_stats(msg)
             }
         }catch(err: any){
             console.log("Err at /events/messageCreate.ts/message_create_listener()");
