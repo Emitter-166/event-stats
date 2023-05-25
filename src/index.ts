@@ -9,27 +9,7 @@ require('dotenv').config({
 })
 
 
-export const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: 'stats.db',
-    logging: false
-})
 
-
-const path_to_models = path.join(__dirname, 'database', 'models');
-
-fs.readdirSync(path_to_models)
-    .forEach(modelFile => {
-        const model = require(path.join(path_to_models, modelFile));
-        model.model(sequelize);
-    })
-
-
-
-
-sequelize.sync({alter: true}).then(async sequelize => {
-    client.login(process.env._TOKEN);
-})
 
 
 const F = IntentsBitField.Flags;
@@ -43,6 +23,7 @@ client.once('ready', async (client) => {
     message_create_listener(client)
 })
 
+client.login(process.env._TOKEN);
 
 
 

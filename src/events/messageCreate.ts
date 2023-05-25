@@ -1,5 +1,5 @@
 import { Client, PermissionFlagsBits } from "discord.js";
-import { errHandler, sequelize } from "..";
+import { errHandler } from "..";
 import { createEvent, deleteEvent, send_stats } from "../services/eventServices";
 
 export const message_create_listener = (client: Client) => {
@@ -10,7 +10,7 @@ export const message_create_listener = (client: Client) => {
             if(!msg.member?.permissions.has(PermissionFlagsBits.ModerateMembers) && !msg.member?.roles.cache.has('1028735048473645148')) throw new Error('Insufficient permissions');
 
             const cmd = msg.content.split(" ")[1];
-            if(!cmd) throw new Error('No arguments provided: start/stop')
+            if(!cmd) throw new Error('No arguments provided: start/stop/stats')
 
             switch(cmd.toLowerCase()){
                 case "start": 

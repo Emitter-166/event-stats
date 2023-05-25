@@ -114,7 +114,7 @@ export const create_stats_embed = async (channel: Channel) => {
         `- duration: ${duration} \n` + 
         `- avg msg per member: ${avg_msg_per_member}\n`
         + '```'
-        let title = `# Event stats for ${(channel as GuildTextBasedChannel).name}`;
+        let title = `# Event stats for #${(channel as GuildTextBasedChannel).name}`;
 
         const embed = new EmbedBuilder()
             .setTitle(title)
