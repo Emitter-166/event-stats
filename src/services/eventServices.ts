@@ -103,10 +103,10 @@ export const create_stats_embed = async (channel: Channel) => {
         let desc = Array.from(data.participants).sort((a, b) => b[1] - a[1])
             .map((current, i) => {
                 return `${i+1}.<@${current[0]}> - \`${current[1]}\``
-                    .replace('1.', "🥇")
-                    .replace('2.', "🥈")
-                    .replace('3.', '🥉');
             }).slice(0, 20).join('\n')
+                    .replace(' 1.', "🥇")
+                    .replace(' 2.', "🥈")
+                    .replace(' 3.', '🥉');
 
         let stats = '```css\n' + 
         `- message count:  ${message_count} \n` +
